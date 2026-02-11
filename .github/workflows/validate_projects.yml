@@ -1,0 +1,56 @@
+name: 테스트 검증
+
+on:
+  pull_request:
+
+jobs:
+  test-projects:
+    name: 코드 테스트
+    runs-on: ubuntu-latest
+    steps:
+      - name: 깃헙 레포지토리를 가져옵니다.
+        uses: actions/checkout@v4
+
+      - name: 파이썬을 설치합니다.
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: ${{ vars.PROJECT_DIR}}pyproject.toml
+          cache: 'pip'
+
+      - name: 프로젝트를 설치합니다.
+        run: |
+          cd ${{ vars.PROJECT_DIR}}
+          python -m pip install poetry
+          poetry config virtualenvs.create false
+          poetry lock
+          poetry install --no-interaction --no-ansi
+
+      - name: 테스트 코드를 실행합니다.
+        run: |
+          cd ${{ vars.PROJECT_DIR}}
+          poetry run coverage run -m pytest
+          poetry run coverage xml
+
+      - name: 커버리지 결과 업로드
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: ${{ vars.PROJECT_DIR}}coverage.xml
+
+  analyze-coverage:
+    needs: test-projects
+    name: 커버리지 확인
+    runs-on: ubuntu-latest
+    steps:
+      - name: 커버리지 결과 다운로드
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage-report
+          path: ./coverage-reports
+
+      - name: 커버리지 결과 확인
+        uses: orgoro/coverage@v3.1
+        with:
+            coverageFile: ./coverage-reports/coverage.xml
+            token: ${{ secrets.DEVOPS_TOKEN }}
+            thresholdAll: 0.8  # 전체 커버리지 임계값

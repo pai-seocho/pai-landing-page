@@ -1,0 +1,117 @@
+name: 이미지 빌드 후 푸시
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-projects:
+    name: 이미지 빌드
+    runs-on: ubuntu-latest
+    steps:
+      - name: DNS 서버를 세팅합니다.
+        run: |
+          echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null
+          echo "nameserver 8.8.4.4" | sudo tee -a /etc/resolv.conf > /dev/null
+
+      - name: 빌드공간 확인
+        run: |
+          echo "Free space:"
+          df -h          
+
+      - name: 빌드 공간 초기화
+        uses: AdityaGarg8/remove-unwanted-software@v2
+        with:
+          remove-android: 'true'
+          remove-dotnet: 'true'
+          remove-haskell: 'true'
+          remove-codeql: 'true'
+          remove-docker-images: 'true'
+
+      - name: 빌드공간 재확인
+        run: |
+          echo "Free space:"
+          df -h    
+
+      - name: Ingress Nginx의 CA를 시스템에 등록합니다.
+        run: |
+          mkdir -p /tmp/certs;
+          echo "${{ secrets.CA_CERTIFICATE }}" > /tmp/certs/ca.crt;
+          mkdir -p /usr/local/share/ca-certificates/;
+          sudo cp /tmp/certs/ca.crt /usr/local/share/ca-certificates/;
+          sudo update-ca-certificates
+
+      - name: 배포를 위한 DNS hosts를 세팅합니다.
+        run: |
+          sudo echo "${{ secrets.HOST_IP }} ${{ secrets.REGISTRY_URL }}" | sudo tee -a /etc/hosts
+
+      - name: 코드 가져오기
+        uses: actions/checkout@v4
+
+      - name: Docker Buildx를 설치합니다.
+        uses: docker/setup-buildx-action@v3
+        with:
+          driver-opts: |
+            image=moby/buildkit:master
+            network=host
+          buildkitd-config-inline: |
+            [registry."${{ secrets.REGISTRY_URL }}"]
+              ca = ["/tmp/certs/ca.crt"]   
+
+      - name: docker private registry에 로그인합니다.
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ secrets.REGISTRY_URL }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: docker private registry에 이미지를 빌드 후 푸시합니다.
+        uses: docker/build-push-action@v2
+        with:
+          context: ${{ vars.PROJECT_DIR}}
+          push: true
+          platforms: linux/amd64
+          tags: |
+            ${{ secrets.REGISTRY_URL }}/${{ vars.PROJECT_NAME}}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=min∫
+
+      - name: kubectl를 설치합니다.
+        uses: azure/setup-kubectl@v3
+
+      - name: Configure Kubeconfig
+        run: |
+          mkdir -p $HOME/.kube
+          echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
+          export KUBECONFIG=$HOME/.kube/config
+
+      - name: 배포할 서버를 확인합니다.
+        id: set_result
+        run: |
+          if kubectl get deployment ${{ vars.PROJECT_NAME}} -n ${{ vars.NAME_SPACE}}; then
+            echo "deployment_exists=true" >> $GITHUB_ENV
+          else
+            echo "deployment_exists=false" >> $GITHUB_ENV
+          fi
+
+      - name: 서버를 재시작합니다.
+        if: env.deployment_exists == 'true'
+        run: kubectl rollout restart deployment ${{ vars.PROJECT_NAME}} -n ${{ vars.NAME_SPACE}};
+
+
+  cleanup:
+    runs-on: ubuntu-latest
+    needs: [ build-projects ]
+    steps:
+      - name: Docker 사용하지 않는 이미지 정리
+        run: docker image prune -a -f
+
+      - name: Docker 종료된 컨테이너 정리
+        run: docker container prune -f
+
+      - name: Docker 사용하지 않는 볼륨 정리
+        run: docker volume prune -f
+
+      - name: Docker 사용하지 않는 네트워크 정리
+        run: docker network prune -f
