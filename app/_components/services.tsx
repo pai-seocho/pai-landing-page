@@ -33,8 +33,7 @@ export function Services() {
         <ScrollReveal>
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-sm font-semibold text-primary">사업 영역</p>
-              <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">
+              <h2 className="text-3xl font-bold md:text-4xl">
                 AI의 모든 과정을 함께합니다
               </h2>
             </div>
@@ -51,9 +50,11 @@ export function Services() {
         <div className="mt-12 divide-y divide-border border-t border-border">
           {SERVICES.map((service, i) => (
             <ScrollReveal key={service.title} delay={i * 0.06}>
-              <div className="grid gap-2 py-8 md:grid-cols-[200px_1fr] md:gap-8 md:py-10">
-                <h3 className="text-xl font-bold">{service.title}</h3>
-                <p className="text-base leading-relaxed text-muted-foreground">
+              <div className="py-8 md:py-10">
+                <h3 className="text-xl font-bold md:text-2xl">
+                  {service.title}
+                </h3>
+                <p className="mt-2 text-lg leading-relaxed text-muted-foreground">
                   {service.description}
                 </p>
               </div>

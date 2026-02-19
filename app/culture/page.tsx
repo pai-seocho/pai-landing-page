@@ -1,14 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Clock,
-  BookOpen,
-  Coffee,
-  Monitor,
-  Plane,
-  Heart,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/app/_components/container";
 import { ScrollReveal } from "@/app/_components/scroll-reveal";
 import { CoverImage } from "@/app/_components/cover-image";
@@ -60,20 +52,12 @@ const TEAMS = [
 ] as const;
 
 const BENEFITS = [
-  { icon: Clock, title: "유연 근무", description: "자율 출퇴근제 운영" },
-  {
-    icon: BookOpen,
-    title: "교육 지원",
-    description: "도서·강의·컨퍼런스 지원",
-  },
-  { icon: Coffee, title: "간식·음료", description: "사무실 상시 제공" },
-  {
-    icon: Monitor,
-    title: "장비 지원",
-    description: "업무에 필요한 최신 장비",
-  },
-  { icon: Plane, title: "휴가", description: "연차 + 리프레시 휴가" },
-  { icon: Heart, title: "건강", description: "종합 건강검진 지원" },
+  { title: "유연 근무", description: "자율 출퇴근제 운영" },
+  { title: "교육 지원", description: "도서·강의·컨퍼런스 지원" },
+  { title: "간식·음료", description: "사무실 상시 제공" },
+  { title: "장비 지원", description: "업무에 필요한 최신 장비" },
+  { title: "휴가", description: "연차 + 리프레시 휴가" },
+  { title: "건강", description: "종합 건강검진 지원" },
 ] as const;
 
 export default function CulturePage() {
@@ -83,26 +67,17 @@ export default function CulturePage() {
       <section className="pt-36 md:pt-48">
         <Container>
           <ScrollReveal>
-            <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-              각자의 전문성으로 몰입하고
+            <h1 className="text-4xl font-bold leading-snug md:text-5xl">
+              몰입하고, 공유하고,
               <br />
               함께 성장합니다
             </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              퍼블릭에이아이는 구성원이 본인의 전문성에 집중할 수 있도록
-              불필요한 절차를 줄이고, 자율과 책임 기반의 문화를 만들어가고
-              있습니다.
-            </p>
           </ScrollReveal>
         </Container>
 
         <ScrollReveal delay={0.1}>
           <Container className="mt-12 md:mt-16">
-            <CoverImage
-              alt="팀 분위기"
-              aspectRatio="aspect-[21/9]"
-              className="rounded-2xl"
-            />
+            <CoverImage alt="팀 분위기" aspectRatio="aspect-[21/9]" />
           </Container>
         </ScrollReveal>
       </section>
@@ -111,9 +86,7 @@ export default function CulturePage() {
       <section className="py-24 md:py-36">
         <Container>
           <ScrollReveal>
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-              이렇게 일합니다
-            </h2>
+            <h2 className="text-3xl font-bold md:text-4xl">이렇게 일합니다</h2>
           </ScrollReveal>
 
           <div className="mt-16 space-y-24 md:mt-20 md:space-y-32">
@@ -138,20 +111,18 @@ export default function CulturePage() {
         </Container>
       </section>
 
-      {/* 우리 팀 */}
-      <section className="border-t border-border py-24 md:py-36">
+      {/* 팀 구성 + 복지 */}
+      <section className="py-24 md:py-36">
         <Container>
           <ScrollReveal>
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-              우리 팀
-            </h2>
+            <h2 className="text-3xl font-bold md:text-4xl">팀 구성</h2>
           </ScrollReveal>
 
-          <div className="mt-16 grid gap-6 md:mt-20 md:grid-cols-2">
+          <div className="mt-12 divide-y divide-border border-t border-border">
             {TEAMS.map((team, i) => (
               <ScrollReveal key={team.name} delay={i * 0.06}>
-                <div className="rounded-2xl border border-border p-8">
-                  <h3 className="text-xl font-bold">{team.name}</h3>
+                <div className="py-8 md:py-10">
+                  <h3 className="text-lg font-bold">{team.name}</h3>
                   <p className="mt-2 text-base leading-relaxed text-muted-foreground">
                     {team.description}
                   </p>
@@ -159,32 +130,20 @@ export default function CulturePage() {
               </ScrollReveal>
             ))}
           </div>
-        </Container>
-      </section>
 
-      {/* 복지 */}
-      <section className="relative overflow-hidden bg-foreground py-24 text-white md:py-36">
-        <Container>
           <ScrollReveal>
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-              지속 가능한 성장을 위해 지원합니다
-            </h2>
+            <h3 className="mt-24 text-2xl font-bold md:mt-32 md:text-3xl">
+              복지 및 지원
+            </h3>
           </ScrollReveal>
 
-          <div className="mt-16 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+          <div className="mt-12 grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-3 md:gap-y-8">
             {BENEFITS.map((benefit, i) => (
-              <ScrollReveal key={benefit.title} delay={i * 0.05}>
-                <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/10">
-                    <benefit.icon size={20} />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold">{benefit.title}</h3>
-                    <p className="mt-1 text-base text-white/60">
-                      {benefit.description}
-                    </p>
-                  </div>
-                </div>
+              <ScrollReveal key={benefit.title} delay={i * 0.04}>
+                <p className="text-base font-bold">{benefit.title}</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {benefit.description}
+                </p>
               </ScrollReveal>
             ))}
           </div>
@@ -196,7 +155,7 @@ export default function CulturePage() {
         <Container>
           <ScrollReveal>
             <div className="text-center">
-              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+              <h2 className="text-3xl font-bold md:text-4xl">
                 AI의 가치를 함께 만들어갈
                 <br />
                 동료를 찾고 있습니다

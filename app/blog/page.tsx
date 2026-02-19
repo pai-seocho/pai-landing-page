@@ -17,9 +17,8 @@ export default function BlogPage() {
     <section className="pt-36 pb-24 md:pt-48 md:pb-36">
       <Container>
         <ScrollReveal>
-          <p className="text-sm font-semibold text-primary">블로그</p>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">
-            기술 이야기
+          <h1 className="text-4xl font-bold leading-snug md:text-5xl">
+            블로그
           </h1>
         </ScrollReveal>
 

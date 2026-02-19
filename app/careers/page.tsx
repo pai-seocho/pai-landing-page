@@ -17,14 +17,11 @@ export default function CareersPage() {
     <section className="pt-36 pb-24 md:pt-48 md:pb-36">
       <Container>
         <ScrollReveal>
-          <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-            AI의 가치를 함께 만들어갈
+          <h1 className="text-4xl font-bold leading-snug md:text-5xl">
+            퍼블릭에이아이와 함께 성장할
             <br />
-            동료를 찾습니다
+            동료를 찾고 있습니다
           </h1>
-          <p className="mt-6 max-w-lg text-lg text-muted-foreground">
-            퍼블릭에이아이에서 함께할 분이라면 누구든 환영합니다.
-          </p>
         </ScrollReveal>
 
         {jobs.length > 0 ? (

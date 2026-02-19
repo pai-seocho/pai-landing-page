@@ -19,7 +19,7 @@ export function Header() {
   return (
     <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-white/80 backdrop-blur-lg">
       <Container className="flex h-16 items-center justify-between">
-        <Link href="/" className="text-xl font-bold tracking-tight">
+        <Link href="/" className="text-xl font-bold ">
           <span className="text-primary">PUBLIC</span>
           <span className="text-foreground">AI</span>
         </Link>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 interface CoverImageProps {
   src?: string;
@@ -14,12 +15,16 @@ export function CoverImage({
   alt,
   fallbackText,
   aspectRatio = "aspect-[4/3]",
-  className = "",
+  className,
   priority = false,
 }: CoverImageProps) {
   return (
     <div
-      className={`relative overflow-hidden rounded-2xl bg-muted ${aspectRatio} ${className}`}
+      className={cn(
+        "relative overflow-hidden rounded-2xl bg-muted",
+        aspectRatio,
+        className,
+      )}
     >
       {src ? (
         <Image

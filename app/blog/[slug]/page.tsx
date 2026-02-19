@@ -45,7 +45,7 @@ export default async function BlogDetailPage({ params }: Props) {
           <span className="text-sm font-medium text-primary">
             {post.meta.category}
           </span>
-          <h1 className="mt-1 text-3xl font-bold tracking-tight md:text-4xl">
+          <h1 className="mt-1 text-3xl font-bold  md:text-4xl">
             {post.meta.title}
           </h1>
           <time className="mt-4 block text-sm text-muted-foreground">
