@@ -7,24 +7,24 @@ import { ButtonLink } from "@/app/_components/button-link";
 
 export const metadata: Metadata = {
   title: "팀문화 — PublicAI",
-  description: "퍼블릭에이아이의 팀 구성, 일하는 방식, 복지를 소개합니다.",
+  description: "퍼블릭에이아이의 팀 구성, 일하는 방식, 복지를 소개해요.",
 };
 
 const WAYS = [
   {
-    title: "문제 중심으로 일합니다",
+    title: "문제 중심으로 일해요",
     description:
-      "기술이 아닌 고객의 문제에서 출발합니다. 해결할 가치가 있는 문제를 찾고, 가장 효과적인 방법을 선택합니다.",
+      "기술이 아닌 고객의 문제에서 출발해요. 해결할 가치가 있는 문제를 찾고, 가장 효과적인 방법을 선택해요.",
   },
   {
-    title: "작게 시작하고 빠르게 검증합니다",
+    title: "작게 시작하고 빠르게 검증해요",
     description:
-      "PoC를 통해 빠르게 가설을 검증하고, 성과가 확인된 방향으로 확장해 나갑니다.",
+      "PoC를 통해 빠르게 가설을 검증하고, 성과가 확인된 방향으로 확장해 나가요.",
   },
   {
-    title: "함께 성장합니다",
+    title: "함께 성장해요",
     description:
-      "기술 공유, 코드 리뷰, 스터디를 통해 팀 전체의 역량을 높이고, 각자의 전문성을 존중합니다.",
+      "기술 공유, 코드 리뷰, 스터디를 통해 팀 전체의 역량을 높이고, 각자의 전문성을 존중해요.",
   },
 ] as const;
 
@@ -32,22 +32,22 @@ const TEAMS = [
   {
     name: "AI 연구",
     description:
-      "NLP, 컴퓨터 비전, 시계열, 멀티모달 등 최신 AI 기술을 연구하고 실무에 적용 가능한 모델로 발전시킵니다.",
+      "NLP, 컴퓨터 비전, 시계열, 멀티모달 등 최신 AI 기술을 연구하고 실무에 적용 가능한 모델로 발전시켜요.",
   },
   {
     name: "개발",
     description:
-      "MLOps 플랫폼부터 웹/앱 서비스까지, 안정적이고 확장 가능한 시스템을 설계하고 구축합니다.",
+      "MLOps 플랫폼부터 웹/앱 서비스까지, 안정적이고 확장 가능한 시스템을 설계하고 구축해요.",
   },
   {
     name: "기획·컨설팅",
     description:
-      "고객의 비즈니스를 이해하고 AI가 실질적 가치를 만들 수 있는 전략을 함께 수립합니다.",
+      "고객의 비즈니스를 이해하고 AI가 실질적 가치를 만들 수 있는 전략을 함께 수립해요.",
   },
   {
     name: "교육",
     description:
-      "비전공자부터 실무자까지, 대상에 맞는 모듈식 AI 교육 커리큘럼을 직접 설계하고 운영합니다.",
+      "비전공자부터 실무자까지, 대상에 맞는 모듈식 AI 교육 커리큘럼을 직접 설계하고 운영해요.",
   },
 ] as const;
 
@@ -67,7 +67,7 @@ export default function CulturePage() {
         <>
           몰입하고, 공유하고,
           <br />
-          함께 성장합니다
+          함께 성장해요
         </>
       }
     >
@@ -77,7 +77,7 @@ export default function CulturePage() {
 
       <div>
         <ScrollReveal>
-          <h2 className="text-4xl font-bold">이렇게 일합니다</h2>
+          <h2 className="text-4xl font-bold">이렇게 일해요</h2>
         </ScrollReveal>
 
         <div className="mt-16 space-y-16">
@@ -138,9 +138,9 @@ export default function CulturePage() {
       <ScrollReveal>
         <div className="text-center">
           <h2 className="text-4xl font-bold">
-            AI의 가치를 함께 만들어갈
+            퍼블릭에이아이와 함께 할
             <br />
-            동료를 찾고 있습니다
+            동료를 찾고 있어요
           </h2>
           <ButtonLink href="/careers" className="mt-8">
             채용 공고 보기

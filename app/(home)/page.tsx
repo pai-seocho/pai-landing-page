@@ -18,19 +18,19 @@ const VALUES = [
   {
     title: "모두에게 열린 AI",
     description:
-      "산업 규모와 조직 형태에 상관없이 누구나 AI를 이해하고, 적용하고, 활용할 수 있도록 기술 접근성을 높입니다.",
+      "산업 규모와 조직 형태에 상관없이 누구나 AI를 이해하고, 적용하고, 활용할 수 있도록 기술 접근성을 높여요.",
     image: "접근성",
   },
   {
     title: "맞춤형 AI 개발",
     description:
-      "분석-설계-구축-운영까지 각 산업과 조직의 방식에 맞춰 실제로 작동하는 맞춤형 AI를 개발하고 내재화합니다.",
+      "분석-설계-구축-운영까지 각 산업과 조직의 방식에 맞춰 실제로 작동하는 맞춤형 AI를 개발하고 내재화해요.",
     image: "맞춤 개발",
   },
   {
     title: "신뢰할 수 있는 AI",
     description:
-      "검증 가능한 데이터, 투명한 모델 운영, 책임 있는 AI 거버넌스를 통해 믿고 사용할 수 있는 AI를 만듭니다.",
+      "검증 가능한 데이터, 투명한 모델 운영, 책임 있는 AI 거버넌스를 통해 믿고 사용할 수 있는 AI를 만들어요.",
     image: "신뢰와 투명성",
   },
 ] as const;
@@ -49,7 +49,7 @@ const SERVICES = [
   {
     title: "AI 활용 시스템 구축",
     description:
-      "웹/앱 서비스, 백오피스, 기간계 시스템에 AI를 접목하여 기존 업무 흐름을 혁신합니다.",
+      "웹/앱 서비스, 백오피스, 기간계 시스템에 AI를 접목하여 기존 업무 흐름을 혁신해요.",
   },
   {
     title: "AI 기획·교육·컨설팅",
@@ -97,9 +97,9 @@ export default function Home() {
     <PageLayout
       title={
         <>
-          AI를 연구하고, 개발하고,
+          AI의 가치를 현실로,
           <br />
-          교육합니다
+          퍼블릭에이아이
         </>
       }
     >
@@ -157,7 +157,7 @@ export default function Home() {
       <div>
         <ScrollReveal>
           <div className="flex flex-row items-end justify-between gap-4">
-            <h2 className="text-4xl font-bold">AI의 모든 과정을 함께합니다</h2>
+            <h2 className="text-4xl font-bold">AI의 모든 과정을 고민해요</h2>
             <Link
               href="/services"
               className="inline-flex items-center gap-2 text-base font-semibold text-primary transition-colors hover:text-primary/80"
@@ -184,39 +184,30 @@ export default function Home() {
 
       <div>
         <ScrollReveal>
-          <p className="text-center text-xl font-medium text-muted-foreground">
-            도메인 지식의 빠른 습득과 커뮤니케이션을 통한 성공사례가
-            <br />
-            퍼블릭에이아이의 가치를 입증합니다.
-          </p>
+          <h2 className="text-4xl font-bold">다양한 파트너들과 함께해요</h2>
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <div className="mt-16 grid grid-cols-5 gap-6">
+          <div className="mt-16 flex flex-wrap gap-3">
             {PARTNERS.map((name) => (
-              <div
+              <span
                 key={name}
-                className="flex h-16 items-center justify-center rounded-lg border border-border/60 bg-white px-4"
+                className="rounded-full border border-border px-5 py-2.5 text-sm font-medium text-muted-foreground"
               >
-                <span className="text-sm font-medium text-foreground/50">
-                  {name}
-                </span>
-              </div>
+                {name}
+              </span>
             ))}
           </div>
         </ScrollReveal>
       </div>
 
       <ScrollReveal>
-        <div className="overflow-hidden rounded-2xl bg-primary px-16 py-20">
+        <div className="rounded-2xl bg-primary px-16 py-20">
           <h2 className="text-4xl font-bold text-white">
-            함께 만들어갈
+            퍼블릭에이아이와 함께 할
             <br />
-            팀원을 찾고 있습니다
+            동료를 찾고 있어요
           </h2>
-          <p className="mt-4 max-w-md text-base leading-relaxed text-white/70">
-            퍼블릭에이아이에서 AI의 가치를 함께 만들어갈 동료를 기다립니다.
-          </p>
           <ButtonLink href="/careers" variant="white" className="mt-8">
             채용 공고 보기
             <ArrowRight size={16} />

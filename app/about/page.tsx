@@ -4,7 +4,7 @@ import { ScrollReveal } from "@/app/_components/scroll-reveal";
 
 export const metadata: Metadata = {
   title: "회사 소개 — PublicAI",
-  description: "퍼블릭에이아이의 미션, 비전, 연혁을 소개합니다.",
+  description: "퍼블릭에이아이의 미션, 비전, 연혁을 소개해요.",
 };
 
 const HISTORY = [
@@ -64,7 +64,7 @@ export default function AboutPage() {
         <>
           기술을 넘어
           <br />
-          산업의 변화를 이끕니다
+          산업의 변화를 이끌어요
         </>
       }
     >

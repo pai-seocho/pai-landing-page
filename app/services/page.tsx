@@ -7,20 +7,20 @@ import { ScrollReveal } from "../_components/scroll-reveal";
 
 export const metadata: Metadata = {
   title: "서비스 — PublicAI",
-  description: "퍼블릭에이아이가 제공하는 AI 서비스를 소개합니다.",
+  description: "퍼블릭에이아이가 제공하는 AI 서비스를 소개해요.",
 };
 
 const SERVICES = [
   {
     title: "AIMP",
     description:
-      "데이터 등록부터 모델 학습, 배포, 운영까지 AI 전주기를 하나의 플랫폼에서 관리합니다. 쿠버네티스 기반 온프레미스/클라우드 환경 구축과 No-code 기반 운영을 지원합니다.",
+      "데이터 등록부터 모델 학습, 배포, 운영까지 AI 전주기를 하나의 플랫폼에서 관리해요. 쿠버네티스 기반 온프레미스/클라우드 환경 구축과 No-code 기반 운영을 지원해요.",
     image: "AIMP 스크린샷",
   },
   {
     title: "AI 컨설팅",
     description:
-      "조직의 현재 데이터와 업무 프로세스를 분석하고, AI 도입 전략을 함께 수립합니다.",
+      "조직의 현재 데이터와 업무 프로세스를 분석하고, AI 도입 전략을 함께 수립해요.",
     image: "AI 컨설팅",
   },
 ] as const;
@@ -32,7 +32,7 @@ export default function ServicesPage() {
         <>
           데이터에서 서비스까지
           <br />
-          AI의 모든 과정을 함께합니다
+          AI의 모든 과정을 고민해요
         </>
       }
     >

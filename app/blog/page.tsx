@@ -7,14 +7,20 @@ import { getAllContent } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "블로그 — PublicAI",
-  description: "퍼블릭에이아이의 기술 블로그입니다.",
+  description: "퍼블릭에이아이의 기술 블로그예요.",
 };
 
 export default function BlogPage() {
   const posts = getAllContent("blog");
 
   return (
-    <PageLayout title="블로그">
+    <PageLayout title={
+      <>
+        고민하고, 해결하고,
+        <br />
+        나누었던 우리들의 여정
+      </>
+    }>
       {posts.length > 0 ? (
         <div className="grid grid-cols-2 gap-8">
           {posts.map((post, i) => (
@@ -45,7 +51,7 @@ export default function BlogPage() {
         </div>
       ) : (
         <div className="rounded-2xl border border-border p-12 text-center">
-          <p className="text-muted-foreground">아직 작성된 글이 없습니다.</p>
+          <p className="text-muted-foreground">아직 작성된 글이 없어요.</p>
         </div>
       )}
     </PageLayout>

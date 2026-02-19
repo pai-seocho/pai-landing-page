@@ -7,7 +7,7 @@ import { getAllContent } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "채용 — PublicAI",
-  description: "퍼블릭에이아이와 함께할 동료를 찾고 있습니다.",
+  description: "퍼블릭에이아이와 함께할 동료를 찾고 있어요.",
 };
 
 export default function CareersPage() {
@@ -17,9 +17,9 @@ export default function CareersPage() {
     <PageLayout
       title={
         <>
-          퍼블릭에이아이와 함께 성장할
+          퍼블릭에이아이와 함께 할
           <br />
-          동료를 찾고 있습니다
+          동료를 찾고 있어요
         </>
       }
     >
@@ -53,7 +53,7 @@ export default function CareersPage() {
       ) : (
         <div className="rounded-2xl border border-border p-12 text-center">
           <p className="text-muted-foreground">
-            현재 진행 중인 채용 공고가 없습니다.
+            현재 진행 중인 채용 공고가 없어요.
           </p>
         </div>
       )}
