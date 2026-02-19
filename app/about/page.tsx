@@ -101,7 +101,7 @@ export default function AboutPage() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.1}>
-              <p className="text-lg leading-loose text-muted-foreground">
+              <p className="text-lg leading-relaxed text-muted-foreground">
                 인공지능이 세상을 변화시키고 있지만, 그 기술의 혜택을 받고 있는
                 기업은 극소수입니다. 퍼블릭에이아이는 산업 규모와 조직 형태에
                 상관없이 누구나 AI를 이해하고 활용할 수 있도록 기술 접근성을

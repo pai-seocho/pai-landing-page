@@ -1,13 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/app/_components/container";
-
-const NAV_LINKS = [
-  { label: "회사소개", href: "/about" },
-  { label: "서비스", href: "/services" },
-  { label: "팀문화", href: "/culture" },
-  { label: "채용", href: "/careers" },
-  { label: "블로그", href: "/blog" },
-] as const;
+import { NAV_ITEMS } from "@/app/_lib/navigation";
 
 export function Footer() {
   return (
@@ -33,13 +26,13 @@ export function Footer() {
           </div>
 
           <nav className="flex flex-wrap gap-6 md:gap-8">
-            {NAV_LINKS.map((link) => (
+            {NAV_ITEMS.map((item) => (
               <Link
-                key={link.href}
-                href={link.href}
+                key={item.href}
+                href={item.href}
                 className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
-                {link.label}
+                {item.label}
               </Link>
             ))}
           </nav>

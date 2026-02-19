@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/app/_components/container";
 import { ScrollReveal } from "@/app/_components/scroll-reveal";
 import { CoverImage } from "@/app/_components/cover-image";
+import { ButtonLink } from "@/app/_components/button-link";
 
 export const metadata: Metadata = {
   title: "팀문화 — PublicAI",
@@ -160,13 +160,10 @@ export default function CulturePage() {
                 <br />
                 동료를 찾고 있습니다
               </h2>
-              <Link
-                href="/careers"
-                className="mt-8 inline-flex h-12 items-center gap-2 rounded-xl bg-primary px-6 text-base font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
-              >
+              <ButtonLink href="/careers" className="mt-8">
                 채용 공고 보기
                 <ArrowRight size={16} />
-              </Link>
+              </ButtonLink>
             </div>
           </ScrollReveal>
         </Container>

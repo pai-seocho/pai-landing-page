@@ -32,11 +32,9 @@ export function Services() {
       <Container>
         <ScrollReveal>
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <h2 className="text-3xl font-bold md:text-4xl">
-                AI의 모든 과정을 함께합니다
-              </h2>
-            </div>
+            <h2 className="text-3xl font-bold md:text-4xl">
+              AI의 모든 과정을 함께합니다
+            </h2>
             <Link
               href="/services"
               className="inline-flex items-center gap-2 text-base font-semibold text-primary transition-colors hover:text-primary/80"

@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { Container } from "@/app/_components/container";
 import { CoverImage } from "@/app/_components/cover-image";
+import { EASE_OUT } from "@/app/_lib/motion";
 
 export function Hero() {
   return (
@@ -11,10 +12,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.8,
-            ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number],
-          }}
+          transition={{ duration: 0.8, ease: EASE_OUT }}
         >
           <h1 className="text-4xl font-bold leading-snug md:text-5xl">
             AI를 연구하고, 개발하고,
@@ -27,11 +25,7 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.8,
-          delay: 0.2,
-          ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number],
-        }}
+        transition={{ duration: 0.8, delay: 0.2, ease: EASE_OUT }}
       >
         <Container className="mt-12 md:mt-16">
           <CoverImage alt="대표 이미지" aspectRatio="aspect-[21/9]" />

@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Container } from "@/app/_components/container";
 import { CoverImage } from "@/app/_components/cover-image";
 import { ScrollReveal } from "@/app/_components/scroll-reveal";
+import { ButtonLink } from "@/app/_components/button-link";
 
 export const metadata: Metadata = {
   title: "서비스 — PublicAI",
@@ -41,12 +42,12 @@ export default function ServicesPage() {
 
       <section className="pb-24 md:pb-36">
         <Container>
-          {SERVICES.map((service, i) => (
-            <ScrollReveal key={service.title} delay={i * 0.08}>
-              {i > 0 && (
-                <div className="mb-20 border-t border-border md:mb-28" />
-              )}
-              <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
+          <div className="divide-y divide-border">
+            {SERVICES.map((service) => (
+              <div
+                key={service.title}
+                className="grid items-center gap-10 py-12 md:grid-cols-2 md:gap-16 md:py-16"
+              >
                 <div>
                   <h2 className="text-3xl font-bold md:text-4xl">
                     {service.title}
@@ -57,9 +58,8 @@ export default function ServicesPage() {
                 </div>
                 <CoverImage alt={service.image} aspectRatio="aspect-[16/10]" />
               </div>
-              {i < SERVICES.length - 1 && <div className="mt-20 md:mt-28" />}
-            </ScrollReveal>
-          ))}
+            ))}
+          </div>
         </Container>
       </section>
 
@@ -73,13 +73,10 @@ export default function ServicesPage() {
               <p className="mt-4 text-lg text-muted-foreground">
                 프로젝트 규모와 상관없이 편하게 문의해주세요.
               </p>
-              <a
-                href="mailto:info@publicai.co.kr"
-                className="mt-8 inline-flex h-12 items-center gap-2 rounded-xl bg-primary px-6 text-base font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
-              >
+              <ButtonLink href="mailto:info@publicai.co.kr" className="mt-8">
                 문의하기
                 <ArrowRight size={16} />
-              </a>
+              </ButtonLink>
             </div>
           </ScrollReveal>
         </Container>

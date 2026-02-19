@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/app/_components/container";
 import { ScrollReveal } from "@/app/_components/scroll-reveal";
+import { ButtonLink } from "@/app/_components/button-link";
 
 export function CTABanner() {
   return (
@@ -17,13 +17,10 @@ export function CTABanner() {
             <p className="mt-4 max-w-md text-base leading-relaxed text-white/70">
               퍼블릭에이아이에서 AI의 가치를 함께 만들어갈 동료를 기다립니다.
             </p>
-            <Link
-              href="/careers"
-              className="mt-8 inline-flex h-12 items-center gap-2 rounded-xl bg-white px-6 text-base font-semibold text-primary transition-colors hover:bg-white/90"
-            >
+            <ButtonLink href="/careers" variant="white" className="mt-8">
               채용 공고 보기
               <ArrowRight size={16} />
-            </Link>
+            </ButtonLink>
           </div>
         </ScrollReveal>
       </Container>

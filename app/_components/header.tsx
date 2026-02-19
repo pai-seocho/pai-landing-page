@@ -4,14 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Container } from "@/app/_components/container";
-
-const NAV_ITEMS = [
-  { label: "회사소개", href: "/about" },
-  { label: "서비스", href: "/services" },
-  { label: "팀문화", href: "/culture" },
-  { label: "채용", href: "/careers" },
-  { label: "블로그", href: "/blog" },
-] as const;
+import { NAV_ITEMS } from "@/app/_lib/navigation";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -19,7 +12,7 @@ export function Header() {
   return (
     <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-white/80 backdrop-blur-lg">
       <Container className="flex h-16 items-center justify-between">
-        <Link href="/" className="text-xl font-bold ">
+        <Link href="/" className="text-xl font-bold">
           <span className="text-primary">PUBLIC</span>
           <span className="text-foreground">AI</span>
         </Link>
