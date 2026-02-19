@@ -31,32 +31,28 @@ export default async function BlogDetailPage({ params }: Props) {
   if (!post) notFound();
 
   return (
-    <section className="pt-36 pb-24 md:pt-48 md:pb-36">
-      <Container>
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-2 text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <ArrowLeft size={14} />
-          블로그 목록
-        </Link>
+    <Container className="pt-48 pb-24">
+      <Link
+        href="/blog"
+        className="inline-flex items-center gap-2 text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+      >
+        <ArrowLeft size={14} />
+        블로그 목록
+      </Link>
 
-        <div className="mt-8">
-          <span className="text-sm font-medium text-primary">
-            {post.meta.category}
-          </span>
-          <h1 className="mt-1 text-3xl font-bold md:text-4xl">
-            {post.meta.title}
-          </h1>
-          <time className="mt-4 block text-sm text-muted-foreground">
-            {post.meta.date}
-          </time>
-        </div>
+      <div className="mt-8">
+        <span className="text-sm font-medium text-primary">
+          {post.meta.category}
+        </span>
+        <h1 className="mt-1 text-4xl font-bold">{post.meta.title}</h1>
+        <time className="mt-4 block text-sm text-muted-foreground">
+          {post.meta.date}
+        </time>
+      </div>
 
-        <article className="prose prose-neutral mt-12 max-w-none prose-headings:font-bold prose-h2:text-2xl prose-p:text-muted-foreground prose-li:text-muted-foreground">
-          <MDXRemote source={post.content} />
-        </article>
-      </Container>
-    </section>
+      <article className="prose prose-neutral mt-12 max-w-none prose-headings:font-bold prose-h2:text-2xl prose-p:text-muted-foreground prose-li:text-muted-foreground">
+        <MDXRemote source={post.content} />
+      </article>
+    </Container>
   );
 }

@@ -31,45 +31,41 @@ export default async function CareerDetailPage({ params }: Props) {
   if (!post) notFound();
 
   return (
-    <section className="pt-36 pb-24 md:pt-48 md:pb-36">
-      <Container>
-        <Link
-          href="/careers"
-          className="inline-flex items-center gap-2 text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <ArrowLeft size={14} />
-          채용 공고 목록
-        </Link>
+    <Container className="pt-48 pb-24">
+      <Link
+        href="/careers"
+        className="inline-flex items-center gap-2 text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+      >
+        <ArrowLeft size={14} />
+        채용 공고 목록
+      </Link>
 
-        <div className="mt-8">
-          <span className="text-sm font-medium text-primary">
-            {post.meta.category}
-          </span>
-          <h1 className="mt-1 text-3xl font-bold md:text-4xl">
-            {post.meta.title}
-          </h1>
-          <p className="mt-4 text-lg text-muted-foreground">
-            {post.meta.description}
-          </p>
-        </div>
+      <div className="mt-8">
+        <span className="text-sm font-medium text-primary">
+          {post.meta.category}
+        </span>
+        <h1 className="mt-1 text-4xl font-bold">{post.meta.title}</h1>
+        <p className="mt-4 text-lg text-muted-foreground">
+          {post.meta.description}
+        </p>
+      </div>
 
-        <article className="prose prose-neutral mt-12 max-w-none prose-headings:font-bold prose-h2:text-2xl prose-p:text-muted-foreground prose-li:text-muted-foreground">
-          <MDXRemote source={post.content} />
-        </article>
+      <article className="prose prose-neutral mt-12 max-w-none prose-headings:font-bold prose-h2:text-2xl prose-p:text-muted-foreground prose-li:text-muted-foreground">
+        <MDXRemote source={post.content} />
+      </article>
 
-        <div className="mt-16 border-t border-border pt-8">
-          <p className="text-base text-muted-foreground">
-            지원은{" "}
-            <a
-              href="mailto:info@publicai.co.kr"
-              className="font-semibold text-primary hover:underline"
-            >
-              info@publicai.co.kr
-            </a>
-            로 이력서를 보내주세요.
-          </p>
-        </div>
-      </Container>
-    </section>
+      <div className="mt-16 border-t border-border pt-8">
+        <p className="text-base text-muted-foreground">
+          지원은{" "}
+          <a
+            href="mailto:info@publicai.co.kr"
+            className="font-semibold text-primary hover:underline"
+          >
+            info@publicai.co.kr
+          </a>
+          로 이력서를 보내주세요.
+        </p>
+      </div>
+    </Container>
   );
 }

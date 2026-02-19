@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
-import { Container } from "@/app/_components/container";
+import { PageLayout } from "@/app/_components/page-layout";
 import { CoverImage } from "@/app/_components/cover-image";
-import { ScrollReveal } from "@/app/_components/scroll-reveal";
 import { ButtonLink } from "@/app/_components/button-link";
+import { ScrollReveal } from "../_components/scroll-reveal";
 
 export const metadata: Metadata = {
   title: "서비스 — PublicAI",
@@ -27,60 +27,44 @@ const SERVICES = [
 
 export default function ServicesPage() {
   return (
-    <>
-      <section className="pt-36 pb-24 md:pt-48 md:pb-36">
-        <Container>
-          <ScrollReveal>
-            <h1 className="text-4xl font-bold leading-snug md:text-5xl">
-              데이터에서 서비스까지
-              <br />
-              AI의 모든 과정을 함께합니다
-            </h1>
-          </ScrollReveal>
-        </Container>
-      </section>
-
-      <section className="pb-24 md:pb-36">
-        <Container>
-          <div className="divide-y divide-border">
-            {SERVICES.map((service) => (
-              <div
-                key={service.title}
-                className="grid items-center gap-10 py-12 md:grid-cols-2 md:gap-16 md:py-16"
-              >
-                <div>
-                  <h2 className="text-3xl font-bold md:text-4xl">
-                    {service.title}
-                  </h2>
-                  <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-                    {service.description}
-                  </p>
-                </div>
-                <CoverImage alt={service.image} aspectRatio="aspect-[16/10]" />
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="py-24 md:py-36">
-        <Container>
-          <ScrollReveal>
-            <div className="text-center">
-              <h2 className="text-3xl font-bold md:text-4xl">
-                AI 도입이 필요하신가요?
-              </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                프로젝트 규모와 상관없이 편하게 문의해주세요.
+    <PageLayout
+      title={
+        <>
+          데이터에서 서비스까지
+          <br />
+          AI의 모든 과정을 함께합니다
+        </>
+      }
+    >
+      <div className="divide-y border-y">
+        {SERVICES.map((service) => (
+          <div
+            key={service.title}
+            className="grid grid-cols-2 items-center gap-16 py-16"
+          >
+            <div>
+              <h2 className="text-4xl font-bold">{service.title}</h2>
+              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+                {service.description}
               </p>
-              <ButtonLink href="mailto:info@publicai.co.kr" className="mt-8">
-                문의하기
-                <ArrowRight size={16} />
-              </ButtonLink>
             </div>
-          </ScrollReveal>
-        </Container>
-      </section>
-    </>
+            <CoverImage alt={service.image} aspectRatio="aspect-[16/10]" />
+          </div>
+        ))}
+      </div>
+
+      <ScrollReveal>
+        <div className="text-center">
+          <h2 className="text-4xl font-bold">AI 도입이 필요하신가요?</h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            프로젝트 규모와 상관없이 편하게 문의해주세요.
+          </p>
+          <ButtonLink href="mailto:info@publicai.co.kr" className="mt-8">
+            문의하기
+            <ArrowRight size={16} />
+          </ButtonLink>
+        </div>
+      </ScrollReveal>
+    </PageLayout>
   );
 }

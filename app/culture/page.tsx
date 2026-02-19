@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
-import { Container } from "@/app/_components/container";
+import { PageLayout } from "@/app/_components/page-layout";
 import { ScrollReveal } from "@/app/_components/scroll-reveal";
 import { CoverImage } from "@/app/_components/cover-image";
 import { ButtonLink } from "@/app/_components/button-link";
@@ -62,112 +62,92 @@ const BENEFITS = [
 
 export default function CulturePage() {
   return (
-    <>
-      {/* Hero */}
-      <section className="pt-36 md:pt-48">
-        <Container>
-          <ScrollReveal>
-            <h1 className="text-4xl font-bold leading-snug md:text-5xl">
-              몰입하고, 공유하고,
-              <br />
-              함께 성장합니다
-            </h1>
-          </ScrollReveal>
-        </Container>
+    <PageLayout
+      title={
+        <>
+          몰입하고, 공유하고,
+          <br />
+          함께 성장합니다
+        </>
+      }
+    >
+      <ScrollReveal>
+        <CoverImage alt="팀 분위기" aspectRatio="aspect-[21/9]" />
+      </ScrollReveal>
 
-        <ScrollReveal delay={0.1}>
-          <Container className="mt-12 md:mt-16">
-            <CoverImage alt="팀 분위기" aspectRatio="aspect-[21/9]" />
-          </Container>
+      <div>
+        <ScrollReveal>
+          <h2 className="text-4xl font-bold">이렇게 일합니다</h2>
         </ScrollReveal>
-      </section>
 
-      {/* 이렇게 일합니다 */}
-      <section className="py-24 md:py-36">
-        <Container>
-          <ScrollReveal>
-            <h2 className="text-3xl font-bold md:text-4xl">이렇게 일합니다</h2>
-          </ScrollReveal>
-
-          <div className="mt-16 space-y-24 md:mt-20 md:space-y-32">
-            {WAYS.map((way, i) => (
-              <ScrollReveal key={way.title} delay={i * 0.08}>
-                <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
-                  <div className={i % 2 === 1 ? "md:order-2" : ""}>
-                    <h3 className="text-2xl font-bold md:text-3xl">
-                      {way.title}
-                    </h3>
-                    <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-                      {way.description}
-                    </p>
-                  </div>
-                  <div className={i % 2 === 1 ? "md:order-1" : ""}>
-                    <CoverImage alt={way.title} aspectRatio="aspect-[4/3]" />
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* 팀 구성 + 복지 */}
-      <section className="py-24 md:py-36">
-        <Container>
-          <ScrollReveal>
-            <h2 className="text-3xl font-bold md:text-4xl">팀 구성</h2>
-          </ScrollReveal>
-
-          <div className="mt-12 divide-y divide-border border-t border-border">
-            {TEAMS.map((team, i) => (
-              <ScrollReveal key={team.name} delay={i * 0.06}>
-                <div className="py-8 md:py-10">
-                  <h3 className="text-lg font-bold">{team.name}</h3>
-                  <p className="mt-2 text-base leading-relaxed text-muted-foreground">
-                    {team.description}
+        <div className="mt-16 space-y-16">
+          {WAYS.map((way, i) => (
+            <ScrollReveal key={way.title} delay={i * 0.08}>
+              <div className="grid grid-cols-2 items-center gap-16">
+                <div className={i % 2 === 1 ? "order-2" : ""}>
+                  <h3 className="text-3xl font-bold">{way.title}</h3>
+                  <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+                    {way.description}
                   </p>
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
+                <div className={i % 2 === 1 ? "order-1" : ""}>
+                  <CoverImage alt={way.title} aspectRatio="aspect-[4/3]" />
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
 
-          <ScrollReveal>
-            <h3 className="mt-24 text-2xl font-bold md:mt-32 md:text-3xl">
-              복지 및 지원
-            </h3>
-          </ScrollReveal>
+      <div>
+        <ScrollReveal>
+          <h2 className="text-4xl font-bold">팀 구성</h2>
+        </ScrollReveal>
 
-          <div className="mt-12 grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-3 md:gap-y-8">
-            {BENEFITS.map((benefit, i) => (
-              <ScrollReveal key={benefit.title} delay={i * 0.04}>
-                <p className="text-base font-bold">{benefit.title}</p>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  {benefit.description}
+        <div className="mt-16 divide-y divide-border border-t border-border">
+          {TEAMS.map((team, i) => (
+            <ScrollReveal key={team.name} delay={i * 0.06}>
+              <div className="py-10">
+                <h3 className="text-lg font-bold">{team.name}</h3>
+                <p className="mt-2 text-base leading-relaxed text-muted-foreground">
+                  {team.description}
                 </p>
-              </ScrollReveal>
-            ))}
-          </div>
-        </Container>
-      </section>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
 
-      {/* CTA */}
-      <section className="py-24 md:py-36">
-        <Container>
-          <ScrollReveal>
-            <div className="text-center">
-              <h2 className="text-3xl font-bold md:text-4xl">
-                AI의 가치를 함께 만들어갈
-                <br />
-                동료를 찾고 있습니다
-              </h2>
-              <ButtonLink href="/careers" className="mt-8">
-                채용 공고 보기
-                <ArrowRight size={16} />
-              </ButtonLink>
-            </div>
-          </ScrollReveal>
-        </Container>
-      </section>
-    </>
+      <div>
+        <ScrollReveal>
+          <h2 className="text-4xl font-bold">복지 및 지원</h2>
+        </ScrollReveal>
+
+        <div className="mt-16 grid grid-cols-3 gap-x-8 gap-y-8">
+          {BENEFITS.map((benefit, i) => (
+            <ScrollReveal key={benefit.title} delay={i * 0.04}>
+              <p className="text-base font-bold">{benefit.title}</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {benefit.description}
+              </p>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+
+      <ScrollReveal>
+        <div className="text-center">
+          <h2 className="text-4xl font-bold">
+            AI의 가치를 함께 만들어갈
+            <br />
+            동료를 찾고 있습니다
+          </h2>
+          <ButtonLink href="/careers" className="mt-8">
+            채용 공고 보기
+            <ArrowRight size={16} />
+          </ButtonLink>
+        </div>
+      </ScrollReveal>
+    </PageLayout>
   );
 }

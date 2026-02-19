@@ -5,8 +5,8 @@ import { NAV_ITEMS } from "@/app/_lib/navigation";
 export function Footer() {
   return (
     <footer className="border-t border-border">
-      <Container className="py-12 md:py-16">
-        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+      <Container className="py-16">
+        <div className="flex flex-row items-start justify-between gap-10">
           <div className="space-y-4">
             <Link href="/" className="font-bold">
               (주)퍼블릭에이아이
@@ -25,7 +25,7 @@ export function Footer() {
             </div>
           </div>
 
-          <nav className="flex flex-wrap gap-6 md:gap-8">
+          <nav className="flex flex-wrap gap-8">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
