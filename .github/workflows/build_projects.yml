@@ -23,11 +23,11 @@ jobs:
       - name: 빌드 공간 초기화
         uses: AdityaGarg8/remove-unwanted-software@v2
         with:
-          remove-android: "true"
-          remove-dotnet: "true"
-          remove-haskell: "true"
-          remove-codeql: "true"
-          remove-docker-images: "true"
+          remove-android: 'true'
+          remove-dotnet: 'true'
+          remove-haskell: 'true'
+          remove-codeql: 'true'
+          remove-docker-images: 'true'
 
       - name: 빌드공간 재확인
         run: |

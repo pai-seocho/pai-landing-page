@@ -1,22 +1,22 @@
-import Link from "next/link";
-import { Container } from "@/app/_components/container";
-import { NAV_ITEMS } from "@/app/_lib/navigation";
+import Link from 'next/link'
+import { Container } from '@/app/_components/container'
+import { NAV_ITEMS } from '@/app/_lib/navigation'
 
 export function Footer() {
   return (
-    <footer className="border-t border-border">
-      <Container className="py-16">
-        <div className="flex flex-row items-start justify-between gap-10">
-          <div className="space-y-4">
-            <Link href="/" className="font-bold">
+    <footer className='border-border border-t'>
+      <Container className='py-16'>
+        <div className='flex flex-row items-start justify-between gap-10'>
+          <div className='space-y-4'>
+            <Link href='/' className='font-bold'>
               (주)퍼블릭에이아이
             </Link>
-            <div className="space-y-1 text-sm text-muted-foreground">
+            <div className='text-muted-foreground space-y-1 text-sm'>
               <p>TEL 070-4788-8825</p>
               <p>
                 <a
-                  href="mailto:info@publicai.co.kr"
-                  className="transition-colors hover:text-foreground"
+                  href='mailto:info@publicai.co.kr'
+                  className='hover:text-foreground transition-colors'
                 >
                   info@publicai.co.kr
                 </a>
@@ -25,12 +25,12 @@ export function Footer() {
             </div>
           </div>
 
-          <nav className="flex flex-wrap gap-8">
+          <nav className='flex flex-wrap gap-8'>
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                className='text-muted-foreground hover:text-foreground text-sm transition-colors'
               >
                 {item.label}
               </Link>
@@ -39,5 +39,5 @@ export function Footer() {
         </div>
       </Container>
     </footer>
-  );
+  )
 }
