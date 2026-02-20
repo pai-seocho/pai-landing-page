@@ -111,7 +111,7 @@ export default function Home() {
             <ScrollReveal key={project.client} delay={i * 0.05}>
               <div className='flex h-full flex-col justify-between rounded-2xl pr-8'>
                 <div>
-                  <p className='text-primary text-sm font-semibold px-3 py-1 rounded-full bg-primary/10 w-fit'>
+                  <p className='text-primary bg-primary/10 w-fit rounded-full px-3 py-1 text-sm font-semibold'>
                     {project.client}
                   </p>
                   <p className='mt-6 text-4xl font-bold'>{project.metric}</p>

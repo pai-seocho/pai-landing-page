@@ -62,7 +62,7 @@ export function ScrollValues() {
           className='grid w-full grid-cols-2 items-start'
           style={{ height: CONTENT_HEIGHT }}
         >
-          <div className='flex flex-col mr-48'>
+          <div className='mr-48 flex flex-col'>
             <h2 className='text-4xl font-bold'>
               퍼블릭에이아이가
               <br />
