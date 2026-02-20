@@ -18,7 +18,7 @@ jobs:
       - name: 빌드공간 확인
         run: |
           echo "Free space:"
-          df -h          
+          df -h
 
       - name: 빌드 공간 초기화
         uses: AdityaGarg8/remove-unwanted-software@v2
@@ -32,7 +32,7 @@ jobs:
       - name: 빌드공간 재확인
         run: |
           echo "Free space:"
-          df -h    
+          df -h
 
       - name: Ingress Nginx의 CA를 시스템에 등록합니다.
         run: |
@@ -57,7 +57,7 @@ jobs:
             network=host
           buildkitd-config-inline: |
             [registry."${{ secrets.REGISTRY_URL }}"]
-              ca = ["/tmp/certs/ca.crt"]   
+              ca = ["/tmp/certs/ca.crt"]
 
       - name: docker private registry에 로그인합니다.
         uses: docker/login-action@v1
@@ -99,10 +99,9 @@ jobs:
         if: env.deployment_exists == 'true'
         run: kubectl rollout restart deployment ${{ vars.PROJECT_NAME}} -n ${{ vars.NAME_SPACE}};
 
-
   cleanup:
     runs-on: ubuntu-latest
-    needs: [ build-projects ]
+    needs: [build-projects]
     steps:
       - name: Docker 사용하지 않는 이미지 정리
         run: docker image prune -a -f
