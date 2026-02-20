@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { Header } from '@/app/_components/header'
 import { Footer } from '@/app/_components/footer'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata: Metadata = {
   title: 'PublicAI — 누구나 누리는 AI',
@@ -21,6 +23,8 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
