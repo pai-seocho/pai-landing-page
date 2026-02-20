@@ -10,6 +10,8 @@ interface Props {
   params: Promise<{ slug: string }>
 }
 
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   const posts = getAllContent('blog')
   return posts.map((post) => ({ slug: post.slug }))
