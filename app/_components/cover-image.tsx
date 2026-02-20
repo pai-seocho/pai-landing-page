@@ -36,7 +36,7 @@ export function CoverImage({
           priority={priority}
         />
       ) : (
-        <div className='flex h-full items-center justify-center text-sm text-foreground'>
+        <div className='text-foreground flex h-full items-center justify-center text-sm'>
           {fallbackText ?? alt}
         </div>
       )}

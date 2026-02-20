@@ -1,9 +1,9 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
+import { CoverImage } from '@/app/_components/cover-image'
 import { PageLayout } from '@/app/_components/page-layout'
 import { ScrollReveal } from '@/app/_components/scroll-reveal'
-import { CoverImage } from '@/app/_components/cover-image'
 import { getAllContent } from '@/lib/content'
+import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: '블로그 — PublicAI',
@@ -24,10 +24,14 @@ export default function BlogPage() {
       }
     >
       {posts.length > 0 ? (
-        <div className='grid grid-cols-2 gap-8'>
-          {posts.map((post, i) => (
-            <ScrollReveal key={post.slug} delay={i * 0.06}>
-              <Link href={`/blog/${post.slug}`} className='group block'>
+        <ScrollReveal delay={0.2}>
+          <div className='grid grid-cols-2 gap-8'>
+            {posts.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className='group block'
+              >
                 <CoverImage
                   alt={post.title}
                   aspectRatio='aspect-[16/9]'
@@ -48,9 +52,9 @@ export default function BlogPage() {
                   </time>
                 </div>
               </Link>
-            </ScrollReveal>
-          ))}
-        </div>
+            ))}
+          </div>
+        </ScrollReveal>
       ) : (
         <div className='border-border rounded-2xl border p-12 text-center'>
           <p className='text-muted-foreground'>아직 작성된 글이 없어요.</p>

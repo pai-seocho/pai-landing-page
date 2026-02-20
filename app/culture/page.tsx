@@ -1,9 +1,9 @@
-import type { Metadata } from 'next'
-import { ArrowRight } from 'lucide-react'
+import { ButtonLink } from '@/app/_components/button-link'
+import { CoverImage } from '@/app/_components/cover-image'
 import { PageLayout } from '@/app/_components/page-layout'
 import { ScrollReveal } from '@/app/_components/scroll-reveal'
-import { CoverImage } from '@/app/_components/cover-image'
-import { ButtonLink } from '@/app/_components/button-link'
+import { ArrowRight } from 'lucide-react'
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: '팀문화 — PublicAI',
@@ -71,18 +71,16 @@ export default function CulturePage() {
         </>
       }
     >
-      <ScrollReveal>
+      <ScrollReveal delay={0.2}>
         <CoverImage alt='팀 분위기' aspectRatio='aspect-[21/9]' />
       </ScrollReveal>
 
-      <div>
-        <ScrollReveal>
-          <h2 className='text-4xl font-bold'>이렇게 일해요</h2>
-        </ScrollReveal>
+      <ScrollReveal delay={0.2}>
+        <h2 className='text-4xl font-bold'>이렇게 일해요</h2>
 
         <div className='mt-16 space-y-16'>
           {WAYS.map((way, i) => (
-            <ScrollReveal key={way.title} delay={i * 0.08}>
+            <ScrollReveal key={way.title} delay={i * 0.05}>
               <div className='grid grid-cols-2 items-center gap-16'>
                 <div className={i % 2 === 1 ? 'order-2' : ''}>
                   <h3 className='text-3xl font-bold'>{way.title}</h3>
@@ -97,16 +95,14 @@ export default function CulturePage() {
             </ScrollReveal>
           ))}
         </div>
-      </div>
+      </ScrollReveal>
 
-      <div>
-        <ScrollReveal>
-          <h2 className='text-4xl font-bold'>팀 구성</h2>
-        </ScrollReveal>
+      <ScrollReveal delay={0.2}>
+        <h2 className='text-4xl font-bold'>팀 구성</h2>
 
-        <div className='divide-border border-border mt-16 divide-y border-t'>
+        <div className='mt-16 divide-y'>
           {TEAMS.map((team, i) => (
-            <ScrollReveal key={team.name} delay={i * 0.06}>
+            <ScrollReveal key={team.name} delay={i * 0.05}>
               <div className='py-10'>
                 <h3 className='text-lg font-bold'>{team.name}</h3>
                 <p className='text-muted-foreground mt-2 text-base leading-relaxed'>
@@ -116,16 +112,14 @@ export default function CulturePage() {
             </ScrollReveal>
           ))}
         </div>
-      </div>
+      </ScrollReveal>
 
-      <div>
-        <ScrollReveal>
-          <h2 className='text-4xl font-bold'>복지 및 지원</h2>
-        </ScrollReveal>
+      <ScrollReveal delay={0.2}>
+        <h2 className='text-4xl font-bold'>복지 및 지원</h2>
 
         <div className='mt-16 grid grid-cols-3 gap-x-8 gap-y-8'>
           {BENEFITS.map((benefit, i) => (
-            <ScrollReveal key={benefit.title} delay={i * 0.04}>
+            <ScrollReveal key={benefit.title} delay={i * 0.05}>
               <p className='text-base font-bold'>{benefit.title}</p>
               <p className='text-muted-foreground mt-1 text-sm'>
                 {benefit.description}
@@ -133,9 +127,9 @@ export default function CulturePage() {
             </ScrollReveal>
           ))}
         </div>
-      </div>
+      </ScrollReveal>
 
-      <ScrollReveal>
+      <ScrollReveal delay={0.2}>
         <div className='text-center'>
           <h2 className='text-4xl font-bold'>
             퍼블릭에이아이와 함께 할

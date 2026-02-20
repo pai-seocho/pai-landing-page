@@ -14,14 +14,14 @@ const SERVICES = [
   {
     title: 'AIMP',
     description:
-      '데이터 등록부터 모델 학습, 배포, 운영까지 AI 전주기를 하나의 플랫폼에서 관리해요. 쿠버네티스 기반 온프레미스/클라우드 환경 구축과 No-code 기반 운영을 지원해요.',
+      'No-code 기반 데이터·AI 서비스 통합 관리 시스템이에요. AI 프로젝트 관리, 서비스 운영, 분석 결과 관리까지 GPU 기반 인프라와 연동하여 한곳에서 처리해요. GS 1등급 인증을 받았어요.',
     image: 'AIMP 스크린샷',
   },
   {
-    title: 'AI 컨설팅',
+    title: 'RAG 기반 AI Agent 솔루션',
     description:
-      '조직의 현재 데이터와 업무 프로세스를 분석하고, AI 도입 전략을 함께 수립해요.',
-    image: 'AI 컨설팅',
+      'RAG 기반 상담 자동화(AICC), 추천 서비스, 업무 자동화까지 — 대규모 언어 모델을 활용한 실무 중심 AI Agent 솔루션을 제공해요.',
+    image: 'AI Agent 솔루션',
   },
 ] as const
 
@@ -36,24 +36,26 @@ export default function ServicesPage() {
         </>
       }
     >
-      <div className='divide-y border-y'>
-        {SERVICES.map((service) => (
-          <div
-            key={service.title}
-            className='grid grid-cols-2 items-center gap-16 py-16'
-          >
-            <div>
-              <h2 className='text-4xl font-bold'>{service.title}</h2>
-              <p className='text-muted-foreground mt-6 text-lg leading-relaxed'>
-                {service.description}
-              </p>
+      <ScrollReveal delay={0.2}>
+        <div className='divide-y'>
+          {SERVICES.map((service) => (
+            <div
+              key={service.title}
+              className='grid grid-cols-2 items-center gap-32 py-16'
+            >
+              <div>
+                <h2 className='text-4xl font-bold'>{service.title}</h2>
+                <p className='text-muted-foreground mt-6 text-lg leading-relaxed'>
+                  {service.description}
+                </p>
+              </div>
+              <CoverImage alt={service.image} aspectRatio='aspect-[16/10]' />
             </div>
-            <CoverImage alt={service.image} aspectRatio='aspect-[16/10]' />
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </ScrollReveal>
 
-      <ScrollReveal>
+      <ScrollReveal delay={0.2}>
         <div className='text-center'>
           <h2 className='text-4xl font-bold'>AI 도입이 필요하신가요?</h2>
           <p className='text-muted-foreground mt-4 text-lg'>

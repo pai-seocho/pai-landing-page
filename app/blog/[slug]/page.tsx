@@ -3,8 +3,8 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import { Container } from '@/app/_components/container'
 import { getAllContent, getContentBySlug } from '@/lib/content'
+import { PageLayout } from '@/app/_components/page-layout'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -31,28 +31,29 @@ export default async function BlogDetailPage({ params }: Props) {
   if (!post) notFound()
 
   return (
-    <Container className='pt-48 pb-24'>
-      <Link
-        href='/blog'
-        className='text-muted-foreground hover:text-foreground inline-flex items-center gap-2 text-base font-medium transition-colors'
-      >
-        <ArrowLeft size={14} />
-        블로그 목록
-      </Link>
+    <PageLayout>
+      <div>
+        <Link
+          href='/blog'
+          className='text-muted-foreground hover:text-foreground font-semibold transition-colors'
+        >
+          <ArrowLeft size={24} />
+        </Link>
 
-      <div className='mt-8'>
-        <span className='text-primary text-sm font-medium'>
-          {post.meta.category}
-        </span>
-        <h1 className='mt-1 text-4xl font-bold'>{post.meta.title}</h1>
-        <time className='text-muted-foreground mt-4 block text-sm'>
-          {post.meta.date}
-        </time>
+        <div className='mt-8'>
+          <span className='text-primary text-sm font-medium'>
+            {post.meta.category}
+          </span>
+          <h1 className='mt-1 text-4xl font-bold'>{post.meta.title}</h1>
+          <p className='text-muted-foreground mt-4 text-lg'>
+            {post.meta.description}
+          </p>
+        </div>
       </div>
 
-      <article className='prose prose-neutral prose-headings:font-bold prose-h2:text-2xl prose-p:text-muted-foreground prose-li:text-muted-foreground mt-12 max-w-none'>
+      <article className='prose prose-neutral prose-headings:font-bold prose-h2:text-2xl prose-p:text-muted-foreground prose-li:text-muted-foreground max-w-none'>
         <MDXRemote source={post.content} />
       </article>
-    </Container>
+    </PageLayout>
   )
 }

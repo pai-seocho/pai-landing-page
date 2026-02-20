@@ -1,9 +1,9 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 import { PageLayout } from '@/app/_components/page-layout'
 import { ScrollReveal } from '@/app/_components/scroll-reveal'
 import { getAllContent } from '@/lib/content'
+import { ArrowRight } from 'lucide-react'
+import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: '채용 — PublicAI',
@@ -24,10 +24,11 @@ export default function CareersPage() {
       }
     >
       {jobs.length > 0 ? (
-        <div className='divide-border divide-y'>
-          {jobs.map((job, i) => (
-            <ScrollReveal key={job.slug} delay={i * 0.05}>
+        <ScrollReveal delay={0.2}>
+          <div className='divide-border divide-y'>
+            {jobs.map((job) => (
               <Link
+                key={job.slug}
                 href={`/careers/${job.slug}`}
                 className='group flex items-center justify-between py-8'
               >
@@ -47,9 +48,9 @@ export default function CareersPage() {
                   className='text-muted-foreground group-hover:text-primary shrink-0 transition-colors'
                 />
               </Link>
-            </ScrollReveal>
-          ))}
-        </div>
+            ))}
+          </div>
+        </ScrollReveal>
       ) : (
         <div className='border-border rounded-2xl border p-12 text-center'>
           <p className='text-muted-foreground'>

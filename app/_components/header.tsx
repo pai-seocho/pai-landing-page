@@ -10,7 +10,7 @@ export function Header() {
   const pathname = usePathname()
 
   return (
-    <header className='sticky top-0 z-50 flex h-16 w-full items-center bg-background'>
+    <header className='bg-background sticky top-0 z-50 flex h-16 w-full items-center'>
       <Container className='flex h-16 items-center justify-between'>
         <Link href='/' className='text-xl font-bold'>
           <span className='text-primary'>PUBLIC</span>
