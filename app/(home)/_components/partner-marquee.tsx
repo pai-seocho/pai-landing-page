@@ -42,6 +42,7 @@ function PartnerLogo({ partner }: { partner: (typeof PARTNERS)[number] }) {
       width={240}
       height={80}
       className='h-20 w-auto object-contain'
+      loading='eager'
       onError={() => setImgError(true)}
     />
   )
@@ -52,7 +53,10 @@ export function PartnerMarquee() {
     <div className='group overflow-hidden'>
       <div
         className='flex w-max gap-16'
-        style={{ animation: 'marquee 60s linear infinite' }}
+        style={{
+          animation: 'marquee 60s linear infinite',
+          willChange: 'transform',
+        }}
       >
         {[...PARTNERS, ...PARTNERS].map((partner, i) => (
           <div
