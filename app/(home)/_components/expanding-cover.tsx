@@ -2,8 +2,14 @@
 
 import { motion, useScroll, useTransform } from 'motion/react'
 import { useLayoutEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 
-export function ExpandingCover() {
+interface ExpandingCoverProps {
+  src: string
+  alt: string
+}
+
+export function ExpandingCover({ src, alt }: ExpandingCoverProps) {
   const sectionRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
   const [inset, setInset] = useState(0)
@@ -35,16 +41,14 @@ export function ExpandingCover() {
     <div ref={sectionRef} style={{ height: '150vh' }}>
       <div className='sticky top-24' ref={contentRef}>
         <motion.div
-          className='bg-muted aspect-21/9 overflow-hidden'
+          className='bg-muted relative aspect-21/9 overflow-hidden'
           style={{
             marginInline: `-${inset}px`,
             clipPath,
             willChange: 'clip-path',
           }}
         >
-          <div className='text-foreground flex h-full items-center justify-center text-sm'>
-            대표 이미지
-          </div>
+          <Image src={src} alt={alt} fill className='object-cover' />
         </motion.div>
       </div>
     </div>

@@ -15,16 +15,19 @@ const WAYS = [
     title: '문제 중심으로 일해요',
     description:
       '기술이 아닌 고객의 문제에서 출발해요. 해결할 가치가 있는 문제를 찾고, 가장 효과적인 방법을 선택해요.',
+    image: '/images/culture/way-01.avif',
   },
   {
     title: '작게 시작하고 빠르게 검증해요',
     description:
       'PoC를 통해 빠르게 가설을 검증하고, 성과가 확인된 방향으로 확장해 나가요.',
+    image: '/images/culture/way-02.avif',
   },
   {
     title: '함께 성장해요',
     description:
       '기술 공유, 코드 리뷰, 스터디를 통해 팀 전체의 역량을 높이고, 각자의 전문성을 존중해요.',
+    image: '/images/culture/way-03.avif',
   },
 ] as const
 
@@ -72,7 +75,11 @@ export default function CulturePage() {
       }
     >
       <ScrollReveal delay={0.2}>
-        <CoverImage alt='팀 분위기' aspectRatio='aspect-[21/9]' />
+        <CoverImage
+          src='/images/culture/cover.avif'
+          alt='팀 분위기'
+          aspectRatio='aspect-[16/9]'
+        />
       </ScrollReveal>
 
       <ScrollReveal delay={0.2}>
@@ -81,7 +88,7 @@ export default function CulturePage() {
         <div className='mt-16 space-y-16'>
           {WAYS.map((way, i) => (
             <ScrollReveal key={way.title} delay={i * 0.05}>
-              <div className='grid grid-cols-2 items-center gap-16'>
+              <div className='grid grid-cols-2 items-center gap-24'>
                 <div className={i % 2 === 1 ? 'order-2' : ''}>
                   <h3 className='text-3xl font-bold'>{way.title}</h3>
                   <p className='text-muted-foreground mt-4 text-lg leading-relaxed'>
@@ -89,7 +96,11 @@ export default function CulturePage() {
                   </p>
                 </div>
                 <div className={i % 2 === 1 ? 'order-1' : ''}>
-                  <CoverImage alt={way.title} aspectRatio='aspect-[4/3]' />
+                  <CoverImage
+                    src={way.image}
+                    alt={way.title}
+                    aspectRatio='aspect-[4/3]'
+                  />
                 </div>
               </div>
             </ScrollReveal>

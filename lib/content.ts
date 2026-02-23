@@ -7,8 +7,14 @@ interface ContentMeta {
   description: string
   date: string
   category?: string
+  thumbnail?: string
   slug: string
   [key: string]: unknown
+}
+
+function extractFirstImage(markdown: string): string | undefined {
+  const match = markdown.match(/!\[.*?\]\((.*?)\)/)
+  return match?.[1]
 }
 
 function getContentDir(type: 'careers' | 'blog') {
@@ -25,8 +31,9 @@ export function getAllContent(type: 'careers' | 'blog'): ContentMeta[] {
   return files
     .map((filename) => {
       const raw = fs.readFileSync(path.join(dir, filename), 'utf-8')
-      const { data } = matter(raw)
-      return { ...data, slug: filename.replace(/\.mdx$/, '') } as ContentMeta
+      const { data, content } = matter(raw)
+      const thumbnail = extractFirstImage(content)
+      return { ...data, thumbnail, slug: filename.replace(/\.mdx$/, '') } as ContentMeta
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }

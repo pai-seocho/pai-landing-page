@@ -66,7 +66,7 @@ export default function Home() {
       }
     >
       <ScrollReveal delay={0.2}>
-        <ExpandingCover />
+        <ExpandingCover src='/images/home/cover.jpg' alt='대표 이미지' />
       </ScrollReveal>
 
       <ScrollReveal delay={0.2}>

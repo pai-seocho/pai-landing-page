@@ -14,19 +14,19 @@ const VALUES = [
     title: '모두에게 열린 AI',
     description:
       '산업 규모와 조직 형태에 상관없이 누구나 AI를 이해하고, 적용하고, 활용할 수 있도록 기술 접근성을 높여요.',
-    image: '접근성',
+    image: '/images/home/value-01.jpg',
   },
   {
     title: '맞춤형 AI 개발',
     description:
       '분석-설계-구축-운영까지 각 산업과 조직의 방식에 맞춰 실제로 작동하는 맞춤형 AI를 개발하고 내재화해요.',
-    image: '맞춤 개발',
+    image: '/images/home/value-02.jpg',
   },
   {
     title: '신뢰할 수 있는 AI',
     description:
       '검증 가능한 데이터, 투명한 모델 운영, 책임 있는 AI 거버넌스를 통해 믿고 사용할 수 있는 AI를 만들어요.',
-    image: '신뢰와 투명성',
+    image: '/images/home/value-03.jpg',
   },
 ] as const
 
@@ -99,7 +99,8 @@ export function ScrollValues() {
                 className='h-full'
               >
                 <CoverImage
-                  alt={VALUES[activeValue].image}
+                  src={VALUES[activeValue].image}
+                  alt={VALUES[activeValue].title}
                   aspectRatio=''
                   className='h-full'
                 />

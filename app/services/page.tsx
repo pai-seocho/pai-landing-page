@@ -15,13 +15,7 @@ const SERVICES = [
     title: 'AIMP',
     description:
       'No-code 기반 데이터·AI 서비스 통합 관리 시스템이에요. AI 프로젝트 관리, 서비스 운영, 분석 결과 관리까지 GPU 기반 인프라와 연동하여 한곳에서 처리해요. GS 1등급 인증을 받았어요.',
-    image: 'AIMP 스크린샷',
-  },
-  {
-    title: 'RAG 기반 AI Agent 솔루션',
-    description:
-      'RAG 기반 상담 자동화(AICC), 추천 서비스, 업무 자동화까지 — 대규모 언어 모델을 활용한 실무 중심 AI Agent 솔루션을 제공해요.',
-    image: 'AI Agent 솔루션',
+    image: '/images/services/aimp.avif',
   },
 ] as const
 
@@ -49,7 +43,11 @@ export default function ServicesPage() {
                   {service.description}
                 </p>
               </div>
-              <CoverImage alt={service.image} aspectRatio='aspect-[16/10]' />
+              <CoverImage
+                src={service.image}
+                alt={service.title}
+                aspectRatio='aspect-[16/10]'
+              />
             </div>
           ))}
         </div>

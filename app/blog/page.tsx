@@ -33,6 +33,7 @@ export default function BlogPage() {
                 className='group block'
               >
                 <CoverImage
+                  src={post.thumbnail}
                   alt={post.title}
                   aspectRatio='aspect-[16/9]'
                   className='transition-transform group-hover:scale-[1.02]'
